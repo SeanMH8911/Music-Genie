@@ -28,43 +28,42 @@
     <script src="./js/index.js"></script>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
-        window.onSpotifyWebPlaybackSDKReady = () => {
+      window.onSpotifyWebPlaybackSDKReady = () => {
+            const token = 'BQCwJjPGka2182jpIQ_8CkEM-dt0olfRtgWCUjf395Ps1_8tRW3ezgVO0JOgpENpxTkBnLAFTw4xNFExgYabOi-mMmEOetbc-gWENtG5VqAfKWNUxARWUPDea_qIeDpSyQ5jLl5XtEdhxiBMP_oQhogAbh2OiBqCajhy5KWzmjH9WTM7BboiY4rPPNrMfqsswYZHkFht_6rWPdSu9ZTQvyH0';
+            const player = new Spotify.Player({
+                name: 'Web Playback SDK Quick Start Player',
+                getOAuthToken: cb => { cb(token); },
+                volume: 0.5
+            });
 
-        const token = '[BQCwJjPGka2182jpIQ_8CkEM-dt0olfRtgWCUjf395Ps1_8tRW3ezgVO0JOgpENpxTkBnLAFTw4xNFExgYabOi-mMmEOetbc-gWENtG5VqAfKWNUxARWUPDea_qIeDpSyQ5jLl5XtEdhxiBMP_oQhogAbh2OiBqCajhy5KWzmjH9WTM7BboiY4rPPNrMfqsswYZHkFht_6rWPdSu9ZTQvyH0]';
-        const player = new Spotify.Player({
+            // Ready
+            player.addListener('ready', ({ device_id }) => {
+                console.log('Ready with Device ID', device_id);
+            });
 
-        name: 'Web Playback SDK Quick Start Player',
-        getOAuthToken: cb => { cb(token); },
-        volume: 0.5
-    });
+            // Not Ready
+            player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
 
-    document.getElementById('togglePlay').onclick = function() {
-    player.togglePlay();
-};
- // Ready
-  player.addListener('ready', ({ device_id }) => {
-    console.log('Ready with Device ID', device_id);
-  });
+            player.addListener('initialization_error', ({ message }) => {
+                console.error(message);
+            });
 
-  // Not Ready
-  player.addListener('not_ready', ({ device_id }) => {
-    console.log('Device ID has gone offline', device_id);
-  });
-  //  listeners to get notified in case something happens
-  player.addListener('initialization_error', ({ message }) => { 
-      console.error(message);
-  });
+            player.addListener('authentication_error', ({ message }) => {
+                console.error(message);
+            });
 
-  player.addListener('authentication_error', ({ message }) => {
-      console.error(message);
-  });
+            player.addListener('account_error', ({ message }) => {
+                console.error(message);
+            });
 
-  player.addListener('account_error', ({ message }) => {
-      console.error(message);
-  });
+            document.getElementById('togglePlay').onclick = function() {
+              player.togglePlay();
+            };
 
-}
-player.connect();
+            player.connect();
+        }
     </script>
 </body>
 </html>
