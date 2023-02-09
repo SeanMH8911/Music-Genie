@@ -1,6 +1,56 @@
-#search-results{
-min-height: 100vh;
-background-color: pink;
-margin: 0;
-padding: 0;
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-image: url(/Images/cheers-204742-fullsize.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.flex {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  position: absolute;
+  top: -60px;
+  left: -30px;
+}
+
+.jumbotron {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+}
+
+button {
+  background-color: #fa198b;
+  border: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
+  width: 200px;
+}
+
+input[type='text'] {
+  border: none;
+  font-size: 16px;
+  padding: 4px;
+  width: 200px;
+  font-family: 'Poppins', sans-serif;
 }
