@@ -6,6 +6,10 @@ const options = {
   },
 };
 
+const searchResultPage = document.getElementById("search-results");
+const searchResultsDiv = document.createElement("div");
+searchResultsDiv.setAttribute("class", "resultsContainer");
+
 // Fetches artists information from user input field
 // NOTE: We need to use encodeURI with the input value
 async function getSearchData() {
@@ -14,13 +18,12 @@ async function getSearchData() {
     options
   );
   let data = await res.json();
-  console.log(data);
+  // console.log(data);
   const artistInfo = data.artists.items;
   for (let i = 0; i < artistInfo.length; i++) {
-    const artistName = artistInfo[i].data.profile;
-    const artistImage = artistInfo[i].data.visuals.avatarImage.sources[0].url;
-    const artistID = artistInfo[i].data.uri.split(":").pop();
+    displaySearchResults(artistInfo[i]);
   }
+  searchResultPage.append(searchResultsDiv);
 }
 getSearchData();
 // Fetches artist data once artist ID has been retrieved from getSearchData function
@@ -58,4 +61,21 @@ function searchResultsLoop(results) {
   }
 }
 
-function displaySearchResults() {}
+function displaySearchResults(artistInfo) {
+  // Create elements to display search results data
+
+  const resultCard = document.createElement("div");
+  resultCard.setAttribute("class", "card");
+
+  // Search results required data
+  const artistName = artistInfo.data.profile.name;
+  const artistImage = artistInfo.data.visuals.avatarImage.sources[0].url;
+  const artistID = artistInfo.data.uri.split(":").pop();
+  resultCard.innerHTML = `
+    <a href="${artistID}">
+      <h1>${artistName}</h1>
+      <img src="${artistImage}"></img>
+    </a>
+  `;
+  searchResultsDiv.append(resultCard);
+}
