@@ -1,0 +1,21 @@
+.header {
+  background-image: url(/images/cheers-204742_980.jpg);
+  /* max-width: 100vw; */
+  min-height: 100vh;
+}
+
+.jumbotron {
+  background-color: transparent;
+  max-height: 100vh;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+}
+form > label {
+  color: white;
+}
