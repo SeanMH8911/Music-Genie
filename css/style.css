@@ -5,20 +5,27 @@ body {
 }
 
 .header {
-  background-image: url(/images/cheers-204742_980.jpg);
+  background-image: url(/Images/cheers-204742-fullsize.jpg);
   background-size: cover;
-  min-height: 100vh;
-  padding-top: 0px;
-  margin-bottom: 0px;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.flex {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  position: absolute;
+  top: -60px;
+  left: -30px;
 }
 
 .jumbotron {
   background-color: transparent;
-  max-height: 100vh;
-  padding-top: 10px;
-}
-
-#title {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,20 +35,21 @@ body {
 h1 {
   color: white;
 }
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-input[type='submit'] {
+
+button {
   background-color: #fa198b;
   border: none;
-  font-size: 0.8rem;
-  padding-left: 56px;
-  padding-right: 56px;
+  font-size: 20px;
   color: white;
+  border-radius: 8px;
+  padding: 4px;
+  width: 200px;
 }
+
 input[type='text'] {
   border: none;
-  font-size: 0.8rem;
+  font-size: 16px;
+  padding: 4px;
+  width: 200px;
+  font-family: 'Poppins', sans-serif;
+}
