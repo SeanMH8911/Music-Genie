@@ -1,3 +1,9 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .header {
   background-image: url(/images/cheers-204742_980.jpg);
   /* max-width: 100vw; */
@@ -8,6 +14,12 @@
   background-color: transparent;
   max-height: 100vh;
   margin: 10px auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+#title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +28,9 @@
 h1 {
   color: white;
 }
-form > label {
-  color: white;
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }
