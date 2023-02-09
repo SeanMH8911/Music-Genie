@@ -30,7 +30,17 @@ h1 {
 }
 form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+input[type='submit'] {
+  background-color: #fa198b;
+  border: none;
+  font-size: 0.8rem;
+  padding-left: 56px;
+  padding-right: 56px;
 }
+input[type='text'] {
+  border: none;
+  font-size: 0.8rem;
