@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-
+    <script src="https://kit.fontawesome.com/5d85bb8342.js" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS style -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -26,6 +26,7 @@
 
 
     <header class="container-fluid header flex">
+        <div class="overlay"></div>
         <!-- Just an image -->
         <nav class="navbar">
             <a class="navbar-brand" href="/">
@@ -42,8 +43,8 @@
 
                 <form class="">
                     <div class="d-flex flex-column">
-                        <input class="" type="text" id="search" name="search" placeholder="Search for Artist...">
-                        <button class="button mt-2">Search</button>
+                        <input class="" type="text" id="search" placeholder="Search for Artist...">
+                        <button class="button mt-2" id="searchBtn">Search</button>
                     </div>
 
                 </form>
@@ -53,9 +54,27 @@
 
 
 
+    <section class="container-fluid result-page py-5 " id="search-container">
+        <div class="ml-3" id="search-results"></div>
+    </section>
 
 
+    <section class="container-fluid artist-page py-5 " id="artist-container">
+        <h2 class="text-white">Singles</h2>
+        <hr class="bg-white">
+        <div class="" id="artist-results">
+            <div>
+                <div id="artistInfo"></div>
+                <div></div>
+            </div>
+            <div id="singles-display">
 
+            </div>
+            <div id="albums-display">
+
+            </div>
+        </div>
+    </section>
 
 
 
