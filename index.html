@@ -39,13 +39,11 @@
             </div>
 
             <div class="mt-4">
-
                 <form class="">
                     <div class="d-flex flex-column">
-                        <input class="" type="text" id="search" placeholder="Search for Artist...">
+                        <input class="search-input" type="text" id="search" placeholder="Search for Artist...">
                         <button class="button mt-2" id="searchBtn">Search</button>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -53,42 +51,46 @@
 
 
 
-    <section class="container-fluid result-page py-5 " id="search-container">
+    <section class="container-fluid result-page py-5 hide" id="search-container">
+        <div class="loading flex">
+            <div class="lds-dual-ring"></div>
+        </div>
         <div class="ml-3" id="search-results"></div>
     </section>
 
 
-    <section class="container-fluid artist-page py-5" id="artist-container">
-        <div class="" id="artist-results">
-            <div class="row artist-info">
-                <div class="d-flex align-items-center" id="artistInfo">
-                    <div class="artist-image">
-                        <img src="./Images/robbie.jpg" alt="robbie">
-                    </div>
-                    <div class="ml-4 text-white">
-                        <div>
-                            <h2>Robbie Williams</h2>
-                            <p>Genres: Dance Rock, Europop</p>
-                            <p>Followers: 2,333,526</p>
-                        </div>
-                    </div>
+    <section class=" container-fluid artist-page py-5 hide" id="artist-container">
+        <div class="loading-2 flex ">
+            <div class="lds-dual-ring"></div>
+        </div>
+        <div class="container" id="artist-results">
+            <div class="row artist-info mb-5">
+                <div class="d-flex align-items-center col-lg-6 col-md-12 p-2" id="artistInfo">
+
                 </div>
-                <div></div>
+                <div class="favourites flex col-lg-6 col-md-12" id="biography">
+                    <h2 class="text-white"></h2>
+                </div>
             </div>
-            <h2 class="text-white">Singles</h2>
+            <h2 class="text-white mt-5 result-headings">Singles</h2>
             <hr class="bg-white">
-            <div id="singles-display">
-
-            </div>
-            <h2 class="text-white">Albums</h2>
+            <div id="singles-display"></div>
+            <h2 class="text-white mt-5 result-headings">Albums</h2>
             <hr class="bg-white">
-            <div id="albums-display">
-
-            </div>
+            <div id="albums-display"></div>
         </div>
     </section>
 
 
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content p-5" id="modal-content">
+
+            </div>
+        </div>
+    </div>
 
     <!-- DayJs Script -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>

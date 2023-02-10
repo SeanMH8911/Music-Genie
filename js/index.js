@@ -7,37 +7,60 @@ const options = {
 };
 
 const searchResultPage = document.getElementById("search-results");
+const searchContainer = document.getElementById("search-container");
+const searchInput = document.getElementById("search");
+const searchBtn = document.getElementById("searchBtn");
 const artistPage = document.getElementById("artist-results");
 const artistInfo = document.getElementById("artistInfo");
+const modalContent = document.getElementById("modal-content");
+const artistContainer = document.getElementById("artist-container");
+const biography = document.getElementById("biography");
 const singlesDisplay = document.getElementById("singles-display");
 const albumsDisplay = document.getElementById("albums-display");
 const searchResultsDiv = document.createElement("div");
+const loading = document.querySelector(".loading");
+const loadingTwo = document.querySelector(".loading-2");
+
 searchResultsDiv.setAttribute("class", "resultsContainer");
 searchResultPage.append(searchResultsDiv);
 
+searchBtn.addEventListener("click", (e) => {
+  artistContainer.classList.add("hide");
+  e.preventDefault();
+  searchResultsDiv.innerHTML = "";
+  let search = searchInput.value.trim();
+  let searchValue = encodeURI(search);
+  getSearchData(searchValue);
+});
+
 // Fetches artists information from user input field
-// NOTE: We need to use encodeURI with the input value
-async function getSearchData() {
+async function getSearchData(search) {
   let res = await fetch(
-    `https://spotify81.p.rapidapi.com/search?q=robbie%20williams&type=artists&offset=0&limit=8&numberOfTopResults=5`,
+    `https://spotify81.p.rapidapi.com/search?q=${search}&type=artists&offset=0&limit=8&numberOfTopResults=5`,
     options
   );
-  let data = await res.json();
-  // console.log(data);
-  const artistInfo = data.artists.items;
-  for (let i = 0; i < artistInfo.length; i++) {
-    displaySearchResults(artistInfo[i]);
+  if (res.status === 200) {
+    let data = await res.json();
+    loading.classList.add("none");
+    showResults();
+    const artistInfo = data.artists.items;
+    for (let i = 0; i < artistInfo.length; i++) {
+      displaySearchResults(artistInfo[i]);
+    }
+  } else {
+    console.log("Place error function here");
   }
 }
-getSearchData();
 // Fetches artist data once artist ID has been retrieved from getSearchData function
 async function getArtistData(id) {
   let res = await fetch(
-    `https://spotify81.p.rapidapi.com/artist_albums?id=${id}&offset=0&limit=100`,
+    `https://spotify81.p.rapidapi.com/artist_overview?id=${id}`,
     options
   );
   let data = await res.json();
-  console.log(data);
+  let artist = data.data.artist;
+  loadingTwo.classList.add("none");
+  return artist;
 }
 // Fetch artist singles using artist id retrieved from getSearchData function
 async function getArtistSingles(id) {
@@ -62,9 +85,7 @@ async function getArtistAlbums(id) {
 }
 
 function searchResultsLoop(results) {
-  for (let i = 0; i < results.length; i++) {
-    console.log(results[i].data);
-  }
+  for (let i = 0; i < results.length; i++) {}
 }
 // Displays the search results on a search results page
 function displaySearchResults(artistInfo) {
@@ -84,21 +105,53 @@ function displaySearchResults(artistInfo) {
   resultCard.addEventListener("click", () => {
     let spotifyId = resultCard.dataset.id;
     ArtistDetail(spotifyId);
+    showDetailedResults();
   });
+}
+
+// Function to show and hide results section
+function showDetailedResults() {
+  artistContainer.classList.remove("hide");
+  artistContainer.scrollIntoView({
+    behavior: "smooth",
+  });
+}
+// Function to show and hide results section
+function showResults() {
+  searchContainer.classList.remove("hide");
 }
 
 function ArtistDetail(id) {
   getArtistSingles(id).then(artistSinglesDisplay);
   getArtistAlbums(id).then(artistAlbumsDisplay);
+  getArtistData(id).then(artistInfoDisplay);
 }
 
+function artistInfoDisplay(data) {
+  // artist.profile.biography we need to add the biography!!
+  let followers = data.stats.followers.toLocaleString("en-US");
+  artistInfo.innerHTML = `
+                    <div class="artist-image">
+                        <img src="${data.visuals.avatarImage.sources[0].url}" alt="robbie">
+                    </div>
+                    <div class="ml-4 text-white">
+                        <div>
+                            <h2>${data.profile.name}</h2>
+                            <p>Followers: ${followers}</p>
+                            <a type="button" class="bio-link" data-toggle="modal"
+                            data-target=".bd-example-modal-lg">Biography</a>
+                        </div>
+                    </div>
+  `;
+  modalContent.innerHTML = data.profile.biography.text;
+}
 function artistAlbumsDisplay(data) {
   let albums = data.items;
-  console.log(albums);
-  albumsDisplay.innerHTML = albums.map(
-    (album) =>
-      `
-      <div class="single-item" id="${album.releases.items}">
+  albumsDisplay.innerHTML = albums
+    .map(
+      (album) =>
+        `
+      <div class="single-item" id="${album.releases.items[0].id}">
         <div class="mr-2">
           <img src="${album.releases.items[0].coverArt.sources[1].url}"></img>
         </div>
@@ -108,7 +161,8 @@ function artistAlbumsDisplay(data) {
           </a>
       </div>
       `
-  );
+    )
+    .join("");
 }
 function artistSinglesDisplay(data) {
   let singles = data.items;
