@@ -1,9 +1,9 @@
-
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
 /* Header CSS start */
 .header {
   background-image: url(/Images/hero.jpg);
@@ -13,7 +13,8 @@ body {
   padding: 0;
   position: relative;
 }
-.overlay{
+
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -24,6 +25,7 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 0;
 }
+
 .flex {
   position: relative;
   display: flex;
@@ -68,11 +70,12 @@ input[type='text'] {
   width: 200px;
   font-family: 'Poppins', sans-serif;
 }
+
 /* Header CSS end */
 
 /* Search Results Pages Start*/
 /*  */
-.artist-image{
+.artist-image {
   border: 1px solid;
   border-radius: 100%;
   height: 200px;
@@ -80,21 +83,24 @@ input[type='text'] {
   overflow: hidden;
   position: relative;
 }
-.artist-image img{
-      display: block;
-      height: 150%;
-      position: absolute;
-      margin: auto;
-      top: -100%;
-      right: -100%;
-      bottom: -100%;
-      left: -100%;
+
+.artist-image img {
+  display: block;
+  height: 150%;
+  position: absolute;
+  margin: auto;
+  top: -100%;
+  right: -100%;
+  bottom: -100%;
+  left: -100%;
 }
 
-h2{
+h2 {
   margin: 0;
 }
-p{
+
+p {
   margin: 0;
 }
+
 /* Search Results Pages End*/
