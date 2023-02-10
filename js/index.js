@@ -1,7 +1,7 @@
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "3012a5789amshb1eff803550883fp1f5e41jsn50a3411ce678",
+    "X-RapidAPI-Key": "0c0c5c0c13msh67880f8a661c91fp1595d2jsned8e886d0cd7",
     "X-RapidAPI-Host": "spotify81.p.rapidapi.com",
   },
 };
@@ -89,12 +89,27 @@ function displaySearchResults(artistInfo) {
 
 function ArtistDetail(id) {
   getArtistSingles(id).then(artistSinglesDisplay);
-  // getArtistAlbums(id).then(artistAlbumsDisplay);
+  getArtistAlbums(id).then(artistAlbumsDisplay);
 }
 
-// function artistAlbumsDisplay(data) {
-//   console.log(data.items);
-// }
+function artistAlbumsDisplay(data) {
+  let albums = data.items;
+  console.log(albums);
+  albumsDisplay.innerHTML = albums.map(
+    (album) =>
+      `
+      <div class="single-item" id="${album.releases.items}">
+        <div class="mr-2">
+          <img src="${album.releases.items[0].coverArt.sources[1].url}"></img>
+        </div>
+          <h4 class="mr-2">${album.releases.items[0].name}</h4>
+          <a target="_blank" href="${album.releases.items[0].sharingInfo.shareUrl}">
+            <i class="fa-solid fa-play"></i>
+          </a>
+      </div>
+      `
+  );
+}
 function artistSinglesDisplay(data) {
   let singles = data.items;
   singlesDisplay.innerHTML = singles
