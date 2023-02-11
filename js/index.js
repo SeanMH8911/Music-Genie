@@ -135,6 +135,7 @@ function ArtistDetail(id) {
 function artistInfoDisplay(data) {
   // artist.profile.biography we need to add the biography!!
   let followers = data.stats.followers.toLocaleString("en-US");
+  let bio = data.profile.biography.text;
   artistInfo.innerHTML = `
                     <div class="artist-image">
                         <img src="${data.visuals.avatarImage.sources[0].url}" alt="robbie">
@@ -143,13 +144,35 @@ function artistInfoDisplay(data) {
                         <div>
                             <h2>${data.profile.name}</h2>
                             <p>Followers: ${followers}</p>
-                            <a type="button" class="bio-link" data-toggle="modal"
-                            data-target=".bd-example-modal-lg">Biography</a>
+                           
                         </div>
                     </div>
   `;
-  modalContent.innerHTML = data.profile.biography.text;
+  modalContent.innerHTML = bio;
+  biography.innerHTML = `<p class ="bio-text">
+  ${truncate(bio)}
+  </p>
+   
+  `;
 }
+
+function truncate(bio) {
+  let ellipsis = "...";
+  let limit = 500;
+  if (bio.length >= limit) {
+    let newBio = bio.slice(0, limit);
+    console.log(newBio.length);
+    return (
+      newBio +
+      ellipsis +
+      `<a type="button" class="bio-link pl-1" data-toggle="modal"
+  data-target=".bd-example-modal-lg">Read more</a>`
+    );
+  } else {
+    return bio;
+  }
+}
+
 function artistAlbumsDisplay(data) {
   let albums = data.items;
   albumsDisplay.innerHTML = albums

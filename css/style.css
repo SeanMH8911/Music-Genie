@@ -209,11 +209,14 @@ p{
 }
 
 .favourites{
+  padding: 20px;
   width: 100%;
   background-color: #232323;
   min-height: 100%;
   border-radius: 10px;
+  color: white;
 }
+
 
 .loading, .loading-2{
   position: absolute;
