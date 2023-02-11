@@ -1,9 +1,10 @@
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Poppins;
 }
-
 /* Header CSS start */
 .header {
   background-image: url(/Images/hero.jpg);
@@ -13,8 +14,7 @@ body {
   padding: 0;
   position: relative;
 }
-
-.overlay {
+.overlay{
   position: absolute;
   top: 0;
   left: 0;
@@ -22,10 +22,9 @@ body {
   bottom: 0;
   height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
-
 .flex {
   position: relative;
   display: flex;
@@ -36,9 +35,13 @@ body {
 
 .navbar {
   position: absolute;
-  top: -60px;
-  left: -30px;
+  top: 0px; 
+  left: 0px; 
 }
+.link a{
+  font-size: 26px;
+}
+
 
 .jumbotron {
   background-color: transparent;
@@ -52,6 +55,14 @@ body {
 h1 {
   color: white;
 }
+.hero-text{
+  font-size: 60px;
+  letter-spacing: 12px;
+  font-weight: 700;
+  background: -webkit-linear-gradient(180deg, rgba(125, 83, 222, 1) 21%, rgba(250, 25, 139, 1) 59%, rgba(238, 248, 255, 1) 99%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 button {
   background-color: #fa198b;
@@ -60,22 +71,118 @@ button {
   color: white;
   border-radius: 8px;
   padding: 4px;
-  width: 200px;
+  width: 300px;
 }
 
-input[type='text'] {
+.search-input {
   border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 200px;
+  font-size: 20px;
+  padding: 6px;
+  width: 300px;
   font-family: 'Poppins', sans-serif;
+
+  
 }
 
+
+.link a {
+  /* position: fixed;
+  top: 10;
+  right: 10; */
+  font-size: 26px;
+}
+.search-input:focus{
+  outline: none;
+}
 /* Header CSS end */
 
 /* Search Results Pages Start*/
-/*  */
-.artist-image {
+.resultsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px;
+}
+
+.result-page{
+    background-color: rgb(250, 25, 139,09);
+    position: relative;
+}
+.card {
+    padding: 0;
+    margin: 0;
+    min-width: 300px;
+    max-width: 300px;
+    height: 300px;
+    background-color: #141414;
+    text-align: center;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+}
+.card h1 {
+    font-size: 22px;
+    padding: 10px;
+}
+.card a {
+  text-decoration: none;
+}
+.card img {
+    object-fit: fill;
+    width: 100%;
+}
+
+
+.hide {
+    display: none;
+}
+
+.artist-page{
+  background-color: #141414;
+  position:relative;
+}
+
+#singles-display, #albums-display {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+column-gap: 20px;
+row-gap: 10px;
+}
+
+.single-item {
+display: flex;
+align-items: center;
+max-width: 500px;
+}
+.single-item:hover {
+background-color: rgb(250, 25, 139,0.4);
+}
+
+
+.single-item  a{
+text-decoration: none;
+margin-left: auto;
+}
+.single-item  h4{
+font-size: 16px;
+color: white;
+}
+
+.fa-solid, .fa-regular{
+width: 20px;
+height: 20px;
+color: rgb(250, 25, 139, 09)
+}
+.fa-solid:hover{
+  color: white;
+}
+.fa-regular:hover{
+  color: white;
+}
+
+
+.artist-image{
   border: 1px solid;
   border-radius: 100%;
   height: 200px;
@@ -83,24 +190,84 @@ input[type='text'] {
   overflow: hidden;
   position: relative;
 }
+.artist-image img{
+      display: block;
+      height: 150%;
+      position: absolute;
+      margin: auto;
+      top: -100%;
+      right: -100%;
+      bottom: -100%;
+      left: -100%;
+}
 
-.artist-image img {
-  display: block;
-  height: 150%;
+h2{
+  margin: 0;
+}
+p{
+  margin: 0;
+}
+
+.favourites{
+  width: 100%;
+  background-color: #232323;
+  min-height: 100%;
+  border-radius: 10px;
+}
+
+.loading, .loading-2{
   position: absolute;
-  margin: auto;
-  top: -100%;
-  right: -100%;
-  bottom: -100%;
-  left: -100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #141414;
+  z-index: 20;
 }
 
-h2 {
-  margin: 0;
+.none{
+  display: none;
 }
 
-p {
-  margin: 0;
+.bio-link{
+  color: #fa198b;
+}
+.bio-link:hover{
+  color: white;
 }
 
+.result-headings{
+color: #fa198b!important;
+}
 /* Search Results Pages End*/
+
+
+/* loading element start */
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* loading element end */

@@ -28,6 +28,7 @@ searchBtn.addEventListener("click", (e) => {
   artistContainer.classList.add("hide");
   e.preventDefault();
   searchResultsDiv.innerHTML = "";
+  loadingTwo.classList.remove("none");
   let search = searchInput.value.trim();
   let searchValue = encodeURI(search);
   getSearchData(searchValue);
@@ -41,11 +42,14 @@ async function getSearchData(search) {
   );
   if (res.status === 200) {
     let data = await res.json();
-    loading.classList.add("none");
     showResults();
     const artistInfo = data.artists.items;
     for (let i = 0; i < artistInfo.length; i++) {
       displaySearchResults(artistInfo[i]);
+      searchContainer.scrollIntoView({
+        behavior: "smooth",
+      });
+      loading.classList.add("none");
     }
   } else {
     console.log("Place error function here");
@@ -58,6 +62,7 @@ async function getArtistData(id) {
     options
   );
   let data = await res.json();
+
   let artist = data.data.artist;
   loadingTwo.classList.add("none");
   return artist;
@@ -156,9 +161,15 @@ function artistAlbumsDisplay(data) {
           <img src="${album.releases.items[0].coverArt.sources[1].url}"></img>
         </div>
           <h4 class="mr-2">${album.releases.items[0].name}</h4>
-          <a target="_blank" href="${album.releases.items[0].sharingInfo.shareUrl}">
-            <i class="fa-solid fa-play"></i>
-          </a>
+          
+          <div class="ml-auto d-inline-block text-nowrap">
+            <a target="_blank" href="${album.releases.items[0].sharingInfo.shareUrl}">
+              <i class="fa-solid fa-play"></i>
+            </a>
+            <a href="" class="ml-2">
+              <i class="fa-regular fa-heart"></i>
+            </a>
+          </div>
       </div>
       `
     )
@@ -175,9 +186,14 @@ function artistSinglesDisplay(data) {
           <img src="${item.releases.items[0].coverArt.sources[1].url}"></img>
         </div>
           <h4 class="mr-2">${item.releases.items[0].name}</h4>
-          <a target="_blank" href="${item.releases.items[0].sharingInfo.shareUrl}">
-            <i class="fa-solid fa-play"></i>
-          </a>
+         <div class="ml-auto d-inline-block text-nowrap">
+            <a class="" target="_blank" href="${item.releases.items[0].sharingInfo.shareUrl}">
+              <i class="fa-solid fa-play"></i>
+            </a>
+            <a href="" class="ml-2">
+              <i class="fa-regular fa-heart"></i>
+            </a>
+          </div>
       </div>
       `
     )
