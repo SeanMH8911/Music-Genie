@@ -9,7 +9,7 @@ body {
 }
 /* Header CSS start */
 .header {
-  background-image: url(/Images/hero.jpg);
+  background-image: url('../Images/hero.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
