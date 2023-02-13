@@ -254,6 +254,11 @@ p{
 .result-headings{
 color: #fa198b!important;
 }
+.btn-dark {
+  position:absolute;
+  right: 0;
+  bottom:0;
+}
 /* Search Results Pages End*/
 
 
