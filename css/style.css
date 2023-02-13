@@ -61,9 +61,10 @@ h1 {
   font-size: 60px;
   letter-spacing: 12px;
   font-weight: 700;
-  background: -webkit-linear-gradient(180deg, rgba(125, 83, 222, 1) 21%, rgba(250, 25, 139, 1) 59%, rgba(238, 248, 255, 1) 99%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-family:Poppins;
+  background: -webkit-linear-gradient(180deg, rgb(73, 0, 243) 21%, rgba(250, 25, 139, 1) 59%, rgb(9, 13, 255) 99%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 button {
