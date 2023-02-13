@@ -189,7 +189,7 @@ function artistAlbumsDisplay(data) {
             <a target="_blank" href="${album.releases.items[0].sharingInfo.shareUrl}">
               <i class="fa-solid fa-play"></i>
             </a>
-            <a href="" class="ml-2">
+            <a id="favouriteBtn" data-id="${album.releases.items[0].id}" href="" class="ml-2">
               <i class="fa-regular fa-heart"></i>
             </a>
           </div>
@@ -213,8 +213,8 @@ function artistSinglesDisplay(data) {
             <a class="" target="_blank" href="${item.releases.items[0].sharingInfo.shareUrl}">
               <i class="fa-solid fa-play"></i>
             </a>
-            <a href="" class="ml-2">
-              <i class="fa-regular fa-heart"></i>
+            <a data-id="${item.releases.items[0].id}" href="" class="ml-2">
+              <i id="favouriteBtn" class="fa-regular fa-heart"></i>
             </a>
           </div>
       </div>
