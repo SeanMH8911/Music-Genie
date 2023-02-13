@@ -150,6 +150,18 @@ column-gap: 20px;
 row-gap: 10px;
 }
 
+@media screen and (max-width: 500px) {
+  #singles-display,
+    #albums-display {
+    display: flex;
+    flex-direction: column;
+  }
+  #artistInfo{
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+}
+
 .single-item {
 display: flex;
 align-items: center;
