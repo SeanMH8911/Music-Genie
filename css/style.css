@@ -1,5 +1,6 @@
 
 body {
+  height: 3000px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -254,10 +255,16 @@ p{
 .result-headings{
 color: #fa198b!important;
 }
-.btn-dark {
-  position:absolute;
-  right: 0;
-  bottom:0;
+.returnTop  {
+  background: transparent;
+  display: none;
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  z-index: 20;
+}
+.returnTop .fa-solid{
+  font-size: 30px;
 }
 /* Search Results Pages End*/
 
