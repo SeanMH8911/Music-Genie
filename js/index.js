@@ -234,7 +234,6 @@ function scrollFunction() {
     returnTop.style.display = "none";
   }
 }
-console.log(window.scroll);
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
