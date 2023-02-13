@@ -1,4 +1,4 @@
-html{
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -16,7 +16,7 @@ body {
   padding: 0;
   position: relative;
 }
-.overlay{
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,13 +37,17 @@ body {
 
 .navbar {
   position: absolute;
-  top: 0px; 
-  left: 0px; 
-}
-.link a{
-  font-size: 26px;
+  top: 0px;
+  left: 0px;
 }
 
+.navbar2 {
+  background-color: #141414;
+  height: 25vh;
+}
+.link a {
+  font-size: 26px;
+}
 
 .jumbotron {
   background-color: transparent;
@@ -57,13 +61,18 @@ body {
 h1 {
   color: white;
 }
-.hero-text{
+.hero-text {
   font-size: 60px;
   letter-spacing: 12px;
   font-weight: 700;
-  background: -webkit-linear-gradient(180deg, rgba(125, 83, 222, 1) 21%, rgba(250, 25, 139, 1) 59%, rgba(238, 248, 255, 1) 99%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(125, 83, 222, 1) 21%,
+    rgba(250, 25, 139, 1) 59%,
+    rgba(238, 248, 255, 1) 99%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 button {
@@ -82,10 +91,7 @@ button {
   padding: 6px;
   width: 300px;
   font-family: 'Poppins', sans-serif;
-
-  
 }
-
 
 .link a {
   /* position: fixed;
@@ -93,110 +99,109 @@ button {
   right: 10; */
   font-size: 26px;
 }
-.search-input:focus{
+.search-input:focus {
   outline: none;
 }
 /* Header CSS end */
 
 /* Search Results Pages Start*/
 .resultsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    margin-left: auto;
-    margin-right: auto;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-left: auto;
+  margin-right: auto;
+  gap: 20px;
 }
 
-.result-page{
-    background-color: rgb(250, 25, 139,09);
-    position: relative;
+.result-page {
+  background-color: rgb(250, 25, 139, 09);
+  position: relative;
 }
 .card {
-    padding: 0;
-    margin: 0;
-    min-width: 300px;
-    max-width: 300px;
-    height: 300px;
-    background-color: #141414;
-    text-align: center;
-    overflow: hidden;
-    display: block;
-    cursor: pointer;
+  padding: 0;
+  margin: 0;
+  min-width: 300px;
+  max-width: 300px;
+  height: 300px;
+  background-color: #141414;
+  text-align: center;
+  overflow: hidden;
+  display: block;
+  cursor: pointer;
 }
 .card h1 {
-    font-size: 22px;
-    padding: 10px;
+  font-size: 22px;
+  padding: 10px;
 }
 .card a {
   text-decoration: none;
 }
 .card img {
-    object-fit: fill;
-    width: 100%;
+  object-fit: fill;
+  width: 100%;
 }
-
 
 .hide {
-    display: none;
+  display: none;
 }
 
-.artist-page{
+.artist-page {
   background-color: #141414;
-  position:relative;
+  position: relative;
 }
 
-#singles-display, #albums-display {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
-column-gap: 20px;
-row-gap: 10px;
+#singles-display,
+#albums-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+  column-gap: 20px;
+  row-gap: 10px;
 }
 
 @media screen and (max-width: 500px) {
   #singles-display,
-    #albums-display {
+  #albums-display {
     display: flex;
     flex-direction: column;
   }
-  #artistInfo{
+  #artistInfo {
     flex-direction: column;
     margin-bottom: 20px;
   }
 }
 
 .single-item {
-display: flex;
-align-items: center;
-max-width: 500px;
+  display: flex;
+  align-items: center;
+  max-width: 500px;
 }
 .single-item:hover {
-background-color: rgb(250, 25, 139,0.4);
+  background-color: rgb(250, 25, 139, 0.4);
 }
 
-
-.single-item  a{
-text-decoration: none;
-margin-left: auto;
+.single-item a {
+  text-decoration: none;
+  margin-left: auto;
 }
-.single-item  h4{
-font-size: 16px;
-color: white;
-}
-
-.fa-solid, .fa-regular{
-width: 20px;
-height: 20px;
-color: rgb(250, 25, 139, 09)
-}
-.fa-solid:hover{
-  color: white;
-}
-.fa-regular:hover{
+.single-item h4 {
+  font-size: 16px;
   color: white;
 }
 
+.fa-solid,
+.fa-regular {
+  width: 20px;
+  height: 20px;
+  color: rgb(250, 25, 139, 09);
+}
+.fa-solid:hover {
+  color: white;
+}
+.fa-regular:hover {
+  color: white;
+}
 
-.artist-image{
+.artist-image {
   border: 1px solid;
   border-radius: 100%;
   height: 200px;
@@ -204,25 +209,25 @@ color: rgb(250, 25, 139, 09)
   overflow: hidden;
   position: relative;
 }
-.artist-image img{
-      display: block;
-      height: 150%;
-      position: absolute;
-      margin: auto;
-      top: -100%;
-      right: -100%;
-      bottom: -100%;
-      left: -100%;
+.artist-image img {
+  display: block;
+  height: 150%;
+  position: absolute;
+  margin: auto;
+  top: -100%;
+  right: -100%;
+  bottom: -100%;
+  left: -100%;
 }
 
-h2{
+h2 {
   margin: 0;
 }
-p{
+p {
   margin: 0;
 }
 
-.favourites{
+.favourites {
   padding: 20px;
   width: 100%;
   background-color: #232323;
@@ -231,8 +236,8 @@ p{
   color: white;
 }
 
-
-.loading, .loading-2{
+.loading,
+.loading-2 {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -242,33 +247,32 @@ p{
   z-index: 20;
 }
 
-.none{
+.none {
   display: none;
 }
 
-.bio-link{
+.bio-link {
   color: #fa198b;
 }
-.bio-link:hover{
+.bio-link:hover {
   color: white;
 }
 
-.result-headings{
-color: #fa198b!important;
+.result-headings {
+  color: #fa198b !important;
 }
-.returnTop  {
+.returnTop {
   background: transparent;
   display: none;
-  position:fixed;
-  right:10px;
-  bottom:10px;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
   z-index: 20;
 }
-.returnTop .fa-solid{
+.returnTop .fa-solid {
   font-size: 30px;
 }
 /* Search Results Pages End*/
-
 
 /* loading element start */
 .lds-dual-ring {
@@ -278,7 +282,7 @@ color: #fa198b!important;
 }
 
 .lds-dual-ring:after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 64px;
   height: 64px;
