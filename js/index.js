@@ -20,7 +20,7 @@ const albumsDisplay = document.getElementById("albums-display");
 const searchResultsDiv = document.createElement("div");
 const loading = document.querySelector(".loading");
 const loadingTwo = document.querySelector(".loading-2");
-
+const returnTop = document.querySelector(".returnTop");
 searchResultsDiv.setAttribute("class", "resultsContainer");
 searchResultPage.append(searchResultsDiv);
 
@@ -221,4 +221,21 @@ function artistSinglesDisplay(data) {
       `
     )
     .join("");
+}
+
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    returnTop.style.display = "block";
+  } else {
+    returnTop.style.display = "none";
+  }
+}
+console.log(window.scroll);
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
