@@ -303,3 +303,11 @@ p {
   }
 }
 /* loading element end */
+
+/* footer */
+.footer {
+  background-color: #b91372;
+  height: 5vh;
+  color: white;
+  font-size: 10px;
+}
