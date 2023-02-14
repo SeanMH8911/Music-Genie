@@ -2,7 +2,8 @@
 
 #WireFrame & Brand Design
 It all started with the colours 
-cGenieBrandColours](https://user-images.githubusercontent.com/55624526/218803543-05249b5e-92b1-488f-b87c-44f5460212cf.png)
+![MusicGenieBrandColours](https://user-images.githubusercontent.com/55624526/218804685-41f80646-842f-4a29-80f1-e1d9c7b2d4cd.png)
+
 
 After a colour was selected I then moved on to the Logo design 
 ![Minimalist Black Orange Music Festival Logo (1)](https://user-images.githubusercontent.com/55624526/218803621-f6350a49-fe07-4a0d-b9be-e3ccffe53b42.png)
