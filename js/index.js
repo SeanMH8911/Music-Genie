@@ -146,7 +146,7 @@ function artistInfoDisplay(data) {
           <div>
               <h2>${data.profile.name}</h2>
               <p>Followers: ${followers}</p>
-              <a data-id="${data.id}"  target="_blank" href="/concerts.html?${data.id}">Concerts</a>
+              <a data-id="${data.id}"  target="_blank" href="/concerts.html?${data.id}">Upcoming Concerts</a>
           </div>
       </div>
   `;

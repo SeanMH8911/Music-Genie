@@ -56,9 +56,7 @@ function displayConcertResults(data) {
             <div class="venue pt-2" >
                 <h6>Venue</h6>
                 <p>${concert.venue.name}</p>
-                <p>Country: ${concert.venue.location.name}</p>
-                <p>Country: ${concert.venue.coordinates.longitude}</p>
-                <p>Country: ${concert.venue.coordinates.latitude}</p>
+                <p>Location: ${concert.venue.location.name}</p>
                 <a lat="${concert.venue.coordinates.longitude}" lng="${
         concert.venue.coordinates.latitude
       }" type="button" id="showMap" class="map-link pt-2" data-toggle="modal"
