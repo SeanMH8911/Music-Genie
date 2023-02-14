@@ -1,10 +1,11 @@
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "0c0c5c0c13msh67880f8a661c91fp1595d2jsned8e886d0cd7",
+    "X-RapidAPI-Key": "3ab7fa8a4fmshdf8195db21d0557p1ca9ecjsn23f05237fe27",
     "X-RapidAPI-Host": "spotify81.p.rapidapi.com",
   },
 };
+
 const loading = document.querySelector(".loading");
 const artistInfoTwo = document.getElementById("artist-info");
 const concertResults = document.getElementById("concertResults");

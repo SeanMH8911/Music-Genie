@@ -1,7 +1,7 @@
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "0c0c5c0c13msh67880f8a661c91fp1595d2jsned8e886d0cd7",
+    "X-RapidAPI-Key": "3ab7fa8a4fmshdf8195db21d0557p1ca9ecjsn23f05237fe27",
     "X-RapidAPI-Host": "spotify81.p.rapidapi.com",
   },
 };
@@ -22,6 +22,8 @@ const searchResultsDiv = document.createElement("div");
 const loading = document.querySelector(".loading");
 const loadingTwo = document.querySelector(".loading-2");
 const returnTop = document.querySelector(".returnTop");
+const data = localStorage.getItem("favs");
+let favData = data ? JSON.parse(data) : [];
 searchResultsDiv.setAttribute("class", "resultsContainer");
 searchResultPage.append(searchResultsDiv);
 
@@ -193,14 +195,15 @@ function artistAlbumsDisplay(data) {
             <a target="_blank" href="${album.releases.items[0].sharingInfo.shareUrl}">
               <i class="fa-solid fa-play"></i>
             </a>
-            <a id="favouriteBtn" data-id="${album.releases.items[0].id}" href="" class="ml-2">
+            <button id="favouriteBtn" data-id="${album.releases.items[0].id}" class="favBtn ml-2">
               <i class="fa-regular fa-heart"></i>
-            </a>
+            </button>
           </div>
       </div>
       `
     )
     .join("");
+  storeFavs();
 }
 
 // Display all singles for artist ID
@@ -219,14 +222,18 @@ function artistSinglesDisplay(data) {
             <a class="" target="_blank" href="${item.releases.items[0].sharingInfo.shareUrl}">
               <i class="fa-solid fa-play"></i>
             </a>
-            <a data-id="${item.releases.items[0].id}" href="" class="ml-2">
-              <i id="favouriteBtn" class="fa-regular fa-heart"></i>
-            </a>
+            <button id="favouriteBtn" data-id="${item.releases.items[0].id}" class="favBtn ml-2">
+              <i  class="fa-regular fa-heart"></i>
+            </button>
           </div>
       </div>
       `
     )
     .join("");
+  storeFavs();
+  // for (let i = 0; i < favouriteBtn.length; i++) {
+  //   console.log(favouriteBtn[i]);
+  // }
 }
 
 // Return to top of page function
@@ -253,3 +260,25 @@ function showError() {
 function hideError() {
   errorMsg.classList.add("hide");
 }
+
+// Stores in local storage
+function storeFavs() {
+  for (let i = 0; i < favouriteBtn.length; i++) {
+    let favBtn = favouriteBtn[i];
+    favBtn.addEventListener("click", (e) => {
+      let itemId = e.target.parentElement.dataset.id;
+      console.log(e);
+      storeItem(itemId);
+    });
+  }
+}
+
+function storeItem(item) {
+  let newItem = {
+    id: item,
+  };
+  favData.push(newItem);
+  localStorage.setItem("favs", JSON.stringify(favData));
+}
+
+console.log(localStorage.getItem("favs"));
