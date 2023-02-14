@@ -46,12 +46,6 @@ function artistDisplay(data) {
 
 function displayConcertResults(data) {
   let concerts = data.data.artist.goods.events.concerts.items;
-  let lat =
-    data.data.artist.goods.events.concerts.items[0].venue.coordinates.latitude;
-  console.log(lat);
-  let lng =
-    data.data.artist.goods.events.concerts.items[0].venue.coordinates.longitude;
-  console.log(lng);
   console.log(concerts);
   concertResults.innerHTML = concerts
     .map(
@@ -63,27 +57,39 @@ function displayConcertResults(data) {
                 <h6>Venue</h6>
                 <p>${concert.venue.name}</p>
                 <p>Country: ${concert.venue.location.name}</p>
-                <a type="button" id="showMap" class="map-link pt-2" data-toggle="modal"
+                <p>Country: ${concert.venue.coordinates.longitude}</p>
+                <p>Country: ${concert.venue.coordinates.latitude}</p>
+                <a lat="${concert.venue.coordinates.longitude}" lng="${
+        concert.venue.coordinates.latitude
+      }" type="button" id="showMap" class="map-link pt-2" data-toggle="modal"
                     data-target=".bd-example-modal-lg">Map</a>
             </div>
     </div>
     `
     )
     .join("");
-  console.log(lat, lng);
+
+  mapView();
+}
+function mapView() {
   if (showMap) {
-    const showMap = document.getElementById("showMap");
-    showMap.addEventListener("click", () => {
-      initMap(lat, lng);
-    });
+    for (let i = 0; i < showMap.length; i++) {
+      let mapView = showMap[i];
+      console.log(showMap[i]);
+      mapView.addEventListener("click", (e) => {
+        let lat = e.target.attributes.lat.nodeValue;
+        let lng = e.target.attributes.lng.nodeValue;
+        initMap(lat, lng);
+      });
+    }
   }
 }
 
-// / Initialize and add the map
-function initMap(lat, lng) {
-  // The location of Uluru
+function initMap(x, y) {
+  let lat = parseFloat(y);
+  let lng = parseFloat(x);
+  console.log(lng);
   const venue = { lat: parseFloat(lat), lng: parseFloat(lng) };
-  // The map, centered at Uluru
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
     center: {
@@ -91,7 +97,6 @@ function initMap(lat, lng) {
       lng,
     },
   });
-  //   The marker, positioned at Uluru
   const marker = new google.maps.Marker({
     position: venue,
     map: map,
