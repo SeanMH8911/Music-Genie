@@ -61,19 +61,10 @@ h1 {
   font-size: 60px;
   letter-spacing: 12px;
   font-weight: 700;
-<<<<<<< HEAD
   font-family: 'Righteous', cursive;
   background: -webkit-linear-gradient(180deg, rgb(255, 41, 141) 21%, rgb(248, 34, 212) 59%, rgb(240, 34, 195) 99%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-=======
-  color: #ffc403;
-  backdrop-filter: blur(1px);
-  opacity: 100%;
-  /* background: -webkit-linear-gradient(180deg, rgba(125, 83, 222, 1) 21%, rgba(250, 25, 139, 1) 59%, rgba(238, 248, 255, 1) 99%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
->>>>>>> d00409cb50dcdea9c73f422c71439561242ddf10
 }
 
 button {
