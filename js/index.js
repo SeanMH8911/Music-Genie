@@ -17,6 +17,7 @@ const artistContainer = document.getElementById("artist-container");
 const biography = document.getElementById("biography");
 const singlesDisplay = document.getElementById("singles-display");
 const albumsDisplay = document.getElementById("albums-display");
+const errorMsg = document.getElementById("errorMsg");
 const searchResultsDiv = document.createElement("div");
 const loading = document.querySelector(".loading");
 const loadingTwo = document.querySelector(".loading-2");
@@ -42,6 +43,7 @@ async function getSearchData(search) {
   );
   if (res.status === 200) {
     let data = await res.json();
+    hideError();
     showResults();
     const artistInfo = data.artists.items;
     for (let i = 0; i < artistInfo.length; i++) {
@@ -52,7 +54,7 @@ async function getSearchData(search) {
       loading.classList.add("none");
     }
   } else {
-    console.log("Place error function here");
+    showError();
   }
 }
 // Fetches artist data once artist ID has been retrieved from getSearchData function
@@ -62,7 +64,7 @@ async function getArtistData(id) {
     options
   );
   let data = await res.json();
-
+  console.log(data);
   let artist = data.data.artist;
   loadingTwo.classList.add("none");
   return artist;
@@ -132,21 +134,21 @@ function ArtistDetail(id) {
   getArtistData(id).then(artistInfoDisplay);
 }
 
+// Displays artist information
 function artistInfoDisplay(data) {
-  // artist.profile.biography we need to add the biography!!
   let followers = data.stats.followers.toLocaleString("en-US");
   let bio = data.profile.biography.text;
   artistInfo.innerHTML = `
-                    <div class="artist-image">
-                        <img src="${data.visuals.avatarImage.sources[0].url}" alt="robbie">
-                    </div>
-                    <div class="ml-4 text-white">
-                        <div>
-                            <h2>${data.profile.name}</h2>
-                            <p>Followers: ${followers}</p>
-                           
-                        </div>
-                    </div>
+      <div class="artist-image">
+          <img src="${data.visuals.avatarImage.sources[0].url}" alt="robbie">
+      </div>
+      <div class="ml-4 text-white">
+          <div>
+              <h2>${data.profile.name}</h2>
+              <p>Followers: ${followers}</p>
+              <a data-id="${data.id}"  target="_blank" href="/concerts.html?${data.id}">Concerts</a>
+          </div>
+      </div>
   `;
   modalContent.innerHTML = bio;
   biography.innerHTML = `<p class ="bio-text">
@@ -155,7 +157,8 @@ function artistInfoDisplay(data) {
    
   `;
 }
-
+// Truncates the biography to fit in its container
+// with a read more button to expand into a modal
 function truncate(bio) {
   let ellipsis = "...";
   let limit = 500;
@@ -173,6 +176,7 @@ function truncate(bio) {
   }
 }
 
+// Display all ablums for artist ID
 function artistAlbumsDisplay(data) {
   let albums = data.items;
   albumsDisplay.innerHTML = albums
@@ -198,6 +202,8 @@ function artistAlbumsDisplay(data) {
     )
     .join("");
 }
+
+// Display all singles for artist ID
 function artistSinglesDisplay(data) {
   let singles = data.items;
   singlesDisplay.innerHTML = singles
@@ -223,6 +229,7 @@ function artistSinglesDisplay(data) {
     .join("");
 }
 
+// Return to top of page function
 window.onscroll = function () {
   scrollFunction();
 };
@@ -237,4 +244,12 @@ function scrollFunction() {
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
+}
+
+function showError() {
+  errorMsg.classList.remove("hide");
+}
+
+function hideError() {
+  errorMsg.classList.add("hide");
 }
