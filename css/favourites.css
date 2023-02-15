@@ -32,3 +32,27 @@ h1{
 .noItemMsg{
 color:#B91372;
 }
+
+
+.artistDetail{
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    opacity:60%;
+    cursor: pointer;
+}
+.artistDetail:hover {
+    opacity: 100%;
+}
+
+.artistDetail h3{
+    margin-left: 6px;
+    color: white;
+}
+.artistImg{
+    border-radius: 100%;
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+}

@@ -29,28 +29,30 @@ function storeName() {
   });
 }
 if (storedName) {
-  welcome.innerHTML = `Welcome, ${storedName.name}`;
+  welcome.innerHTML = `Welcome, <span style="color:#B91372">${storedName.name}</span>`;
 }
-
 if (storedFavs) {
-  newArr.push(storedFavs);
-  for (let i = 0; i < newArr.length; i++) {
-    const element = newArr[i];
-    artistInfo(element[i].id);
+  for (let i = 0; i < storedFavs.length; i++) {
+    artistInfo(storedFavs[i].id);
   }
 }
 async function artistInfo(id) {
-  console.log(id.length);
   let res = await fetch(
     `https://spotify81.p.rapidapi.com/artist_overview?id=${id}`,
     options
   );
   let data = await res.json();
-  myFavourites.innerHTML += ` 
-    <div>
-      <h3>${data.data.artist.profile.name}</h3>
-    </div>
-    `;
+  console.log(data);
+  displayArtist(data);
+}
+
+function displayArtist(data) {
+  myFavourites.innerHTML += `
+  <div class="artistDetail">
+    <img class="artistImg" src="${data.data.artist.visuals.avatarImage.sources[1].url}"></img>
+    <h3>${data.data.artist.profile.name}</h3>
+  </div>
+  `;
 }
 
 if (!storedFavs) {
