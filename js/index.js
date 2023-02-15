@@ -162,12 +162,14 @@ function artistInfoDisplay(data) {
   </p>
    
   `;
-  document.getElementById("favouriteBtn").addEventListener("click", (e) => {
-    let favItem = e.target;
-    let itemId = e.target.parentElement.dataset.id;
-    storeItem(itemId);
-    favItem.classList.add("favBtnStored");
-  });
+  if (favouriteBtn) {
+    document.getElementById("favouriteBtn").addEventListener("click", (e) => {
+      let favItem = e.target;
+      let itemId = e.target.parentElement.dataset.id;
+      storeItem(itemId);
+      favItem.classList.add("favBtnStored");
+    });
+  }
   if (favourites) {
     let itemId = favouriteBtn.dataset.id;
     let storedItems = JSON.parse(favourites);
