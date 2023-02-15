@@ -1,6 +1,5 @@
 body {
     background-color: #141414;
-    
 }
 h4,  h6{
     color: white;
@@ -16,10 +15,9 @@ p{
 h2{
     color: #fa198b !important;
 }
-.none {
+.hide {
     display: none;
 }
-
 #artist-info img {
     border-radius: 100%;
     width: 200px;
@@ -58,34 +56,6 @@ h2{
     color: #fa198b!important;
     font-weight: bold;
 }
-
-/* loading element start */
-.lds-dual-ring {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
+.none {
+    display: none;
 }
-
-.lds-dual-ring:after {
-    content: " ";
-    display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border-radius: 50%;
-    border: 6px solid #fff;
-    border-color: #fff transparent #fff transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
-}
-
-@keyframes lds-dual-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* loading element end */

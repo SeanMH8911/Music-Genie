@@ -6,7 +6,6 @@ const options = {
   },
 };
 
-const loading = document.querySelector(".loading");
 const artistInfoTwo = document.getElementById("artist-info");
 const concertResults = document.getElementById("concertResults");
 // const modalContent = document.getElementById("modalContent")
@@ -23,7 +22,6 @@ async function artistInfo(id) {
   );
   let data = await res.json();
   let artist = data.data.artist;
-  loading.classList.add("none");
   artistDisplay(artist);
   displayConcertResults(data);
 }

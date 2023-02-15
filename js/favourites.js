@@ -12,7 +12,6 @@ const nameInput = document.getElementById("nameInput");
 const nameSubmit = document.getElementById("nameSubmit");
 const welcome = document.getElementById("welcome");
 const myFavourites = document.getElementById("myFavourites");
-const newArr = [];
 if (storedName === null) {
   $("#modal-content-welcome").modal("show");
   storeName();
