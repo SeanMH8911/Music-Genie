@@ -8,7 +8,6 @@ const options = {
 
 const artistInfoTwo = document.getElementById("artist-info");
 const concertResults = document.getElementById("concertResults");
-// const modalContent = document.getElementById("modalContent")
 async function getId() {
   let searchParam = await window.location.search;
   let itemId = searchParam.slice(1);
@@ -23,7 +22,11 @@ async function artistInfo(id) {
   let data = await res.json();
   let artist = data.data.artist;
   artistDisplay(artist);
-  displayConcertResults(data);
+  if (data.data.artist.goods.events.concerts.totalCount > 0) {
+    displayConcertResults(data);
+  } else {
+    concertResults.innerHTML = `<h4 class="noData">There are no upcoming concerts for this artist.</h4>`;
+  }
 }
 // data.artist.goods.events.concerts.items;
 
@@ -67,6 +70,7 @@ function displayConcertResults(data) {
 
   mapView();
 }
+
 function mapView() {
   if (showMap) {
     for (let i = 0; i < showMap.length; i++) {
@@ -74,25 +78,23 @@ function mapView() {
       mapView.addEventListener("click", (e) => {
         let lat = e.target.attributes.lat.nodeValue;
         let lng = e.target.attributes.lng.nodeValue;
-        initMap(lat, lng);
+        displayMap(lat, lng);
       });
     }
   }
 }
 
-function initMap(x, y) {
+function displayMap(x, y) {
   let lat = parseFloat(y);
   let lng = parseFloat(x);
-  const venue = { lat: parseFloat(lat), lng: parseFloat(lng) };
+  const venue = { lat, lng };
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
-    center: {
-      lat,
-      lng,
-    },
+    center: venue,
   });
   const marker = new google.maps.Marker({
     position: venue,
     map: map,
   });
 }
+function initmap() {}

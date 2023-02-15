@@ -15,6 +15,10 @@ p{
 h2{
     color: #fa198b !important;
 }
+.noData{
+    color: #B91372;
+    margin-top: 2px;
+}
 .hide {
     display: none;
 }
