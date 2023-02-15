@@ -22,6 +22,7 @@ After a colour was selected I then moved on to the Logo design
 ## Wireframe
 
 Next up was a basic wireframe
+
 <img src="https://user-images.githubusercontent.com/55624526/218803559-51ab4162-2786-434b-b9a0-86e0285e9a2d.png" alt="mypic" style="width:400px;"/>
 
 ## Meet - Music Genie
