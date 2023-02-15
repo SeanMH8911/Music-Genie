@@ -25,9 +25,14 @@ function storeName() {
     };
     localStorage.setItem("name", JSON.stringify(newName));
     $("#modal-content-welcome").modal("hide");
+    setName();
   });
 }
 if (storedName) {
+  setName();
+}
+
+function setName() {
   welcome.innerHTML = `Welcome, <span style="color:#B91372">${storedName.name}</span>`;
 }
 
