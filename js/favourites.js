@@ -20,7 +20,6 @@ if (storedName === null) {
 function storeName() {
   nameSubmit.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(nameInput.value);
     let newName = {
       name: nameInput.value,
     };
@@ -31,6 +30,7 @@ function storeName() {
 if (storedName) {
   welcome.innerHTML = `Welcome, <span style="color:#B91372">${storedName.name}</span>`;
 }
+
 if (storedFavs) {
   for (let i = 0; i < storedFavs.length; i++) {
     artistInfo(storedFavs[i].id);
@@ -42,7 +42,6 @@ async function artistInfo(id) {
     options
   );
   let data = await res.json();
-  console.log(data);
   displayArtist(data);
 }
 

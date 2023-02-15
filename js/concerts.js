@@ -47,7 +47,6 @@ function artistDisplay(data) {
 
 function displayConcertResults(data) {
   let concerts = data.data.artist.goods.events.concerts.items;
-  console.log(concerts);
   concertResults.innerHTML = concerts
     .map(
       (concert) => `
@@ -74,7 +73,6 @@ function mapView() {
   if (showMap) {
     for (let i = 0; i < showMap.length; i++) {
       let mapView = showMap[i];
-      console.log(showMap[i]);
       mapView.addEventListener("click", (e) => {
         let lat = e.target.attributes.lat.nodeValue;
         let lng = e.target.attributes.lng.nodeValue;
@@ -87,7 +85,6 @@ function mapView() {
 function initMap(x, y) {
   let lat = parseFloat(y);
   let lng = parseFloat(x);
-  console.log(lng);
   const venue = { lat: parseFloat(lat), lng: parseFloat(lng) };
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,

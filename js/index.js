@@ -152,7 +152,7 @@ function artistInfoDisplay(data) {
               </button>
              </div>
               <p>Followers: ${followers}</p>
-              <a data-id="${data.id}"  target="_blank" href="/concerts.html?${data.id}">Upcoming Concerts</a>
+              <a data-id="${data.id}"  target="_blank" href="https://seanmh8911.github.io/Music-Genie/concerts.html?${data.id}">Upcoming Concerts</a>
               
           </div>
       </div>
