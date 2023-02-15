@@ -1,61 +1,14 @@
 # Music-Genie
 
+#WireFrame & Brand Design
+It all started with the colours 
+![MusicGenieBrandColours](https://user-images.githubusercontent.com/55624526/218804685-41f80646-842f-4a29-80f1-e1d9c7b2d4cd.png)
 
-## Table of Contents
 
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Collaboratorss](#collaborators)
-- [Contact](#contact)
+After a colour was selected I then moved on to the Logo design 
+![Minimalist Black Orange Music Festival Logo (1)](https://user-images.githubusercontent.com/55624526/218803621-f6350a49-fe07-4a0d-b9be-e3ccffe53b42.png)
 
-## Description
+Next up was a basic wireframe 
+![Project Music Genie (1)](https://user-images.githubusercontent.com/55624526/218803559-51ab4162-2786-434b-b9a0-86e0285e9a2d.png)
 
-```
-USER STORY
-
-As a user I want to search for my favourite artist or album and get a get a list of their songs and lyrics to then choose and playxxx using 
-Additonally I want a to be able to see further information about the artist I have chosen. HTML, CSS, JavaScript, Bootstrap, APIs, SDKs
-```
-
-## Installation
-
-```
-PREREQUISITS
-
-To access all the features as displayed it is recomended that you have a premium spotify account
-```
-
-## Usage
-
-```
-AVAILABILITY
-
-Available for use on IOS and Andriod ??????
-```
-
-## Collaborators
-
-```
-THE TEAM
-
-K Ahmed
-N Cahill
-S Howe
-S Jaffrey
-
-```
-
-## Contact
-
-```
-CONTACT US
-
-Reach out to us on GitHub with queries 
-
-https://github.com/Mystfreak
-https://github.com/Bibbleboop
-https://github.com/SeanMH8911
-https://github.com/Syed-Jaffery
-
-```
+![mg](https://user-images.githubusercontent.com/55624526/218804974-141e32aa-d2ac-4949-a5ed-f39cc3f975ac.png)
