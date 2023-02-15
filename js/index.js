@@ -22,8 +22,8 @@ const searchResultsDiv = document.createElement("div");
 const loading = document.querySelector(".loading");
 const loadingTwo = document.querySelector(".loading-2");
 const returnTop = document.querySelector(".returnTop");
-const data = localStorage.getItem("favs");
-let favData = data ? JSON.parse(data) : [];
+const favourites = localStorage.getItem("favs");
+let favData = favourites ? JSON.parse(favourites) : [];
 searchResultsDiv.setAttribute("class", "resultsContainer");
 searchResultPage.append(searchResultsDiv);
 
@@ -66,7 +66,6 @@ async function getArtistData(id) {
     options
   );
   let data = await res.json();
-  console.log(data);
   let artist = data.data.artist;
   loadingTwo.classList.add("none");
   return artist;
@@ -146,9 +145,15 @@ function artistInfoDisplay(data) {
       </div>
       <div class="ml-4 text-white">
           <div>
-              <h2>${data.profile.name}</h2>
+             <div class="d-flex">
+               <h2>${data.profile.name}</h2>
+              <button id="favouriteBtn" data-id="${data.id}" class="favBtn ml-2">
+              <i id="heartFav" class="fa-regular fa-heart"></i>
+              </button>
+             </div>
               <p>Followers: ${followers}</p>
               <a data-id="${data.id}"  target="_blank" href="/concerts.html?${data.id}">Upcoming Concerts</a>
+              
           </div>
       </div>
   `;
@@ -158,7 +163,23 @@ function artistInfoDisplay(data) {
   </p>
    
   `;
+  document.getElementById("favouriteBtn").addEventListener("click", (e) => {
+    let favItem = e.target;
+    let itemId = e.target.parentElement.dataset.id;
+    storeItem(itemId);
+    favItem.classList.add("favBtnStored");
+  });
+  if (favourites) {
+    let itemId = favouriteBtn.dataset.id;
+    let storedItems = JSON.parse(favourites);
+    for (let j = 0; j < storedItems.length; j++) {
+      if (itemId === storedItems[j].id) {
+        document.getElementById("heartFav").classList.add("favBtnStored");
+      }
+    }
+  }
 }
+
 // Truncates the biography to fit in its container
 // with a read more button to expand into a modal
 function truncate(bio) {
@@ -166,7 +187,6 @@ function truncate(bio) {
   let limit = 500;
   if (bio.length >= limit) {
     let newBio = bio.slice(0, limit);
-    console.log(newBio.length);
     return (
       newBio +
       ellipsis +
@@ -195,15 +215,11 @@ function artistAlbumsDisplay(data) {
             <a target="_blank" href="${album.releases.items[0].sharingInfo.shareUrl}">
               <i class="fa-solid fa-play"></i>
             </a>
-            <button id="favouriteBtn" data-id="${album.releases.items[0].id}" class="favBtn ml-2">
-              <i class="fa-regular fa-heart"></i>
-            </button>
           </div>
       </div>
       `
     )
     .join("");
-  storeFavs();
 }
 
 // Display all singles for artist ID
@@ -222,18 +238,11 @@ function artistSinglesDisplay(data) {
             <a class="" target="_blank" href="${item.releases.items[0].sharingInfo.shareUrl}">
               <i class="fa-solid fa-play"></i>
             </a>
-            <button id="favouriteBtn" data-id="${item.releases.items[0].id}" class="favBtn ml-2">
-              <i  class="fa-regular fa-heart"></i>
-            </button>
           </div>
       </div>
       `
     )
     .join("");
-  storeFavs();
-  // for (let i = 0; i < favouriteBtn.length; i++) {
-  //   console.log(favouriteBtn[i]);
-  // }
 }
 
 // Return to top of page function
@@ -262,16 +271,8 @@ function hideError() {
 }
 
 // Stores in local storage
-function storeFavs() {
-  for (let i = 0; i < favouriteBtn.length; i++) {
-    let favBtn = favouriteBtn[i];
-    favBtn.addEventListener("click", (e) => {
-      let itemId = e.target.parentElement.dataset.id;
-      console.log(e);
-      storeItem(itemId);
-    });
-  }
-}
+
+function checkStored() {}
 
 function storeItem(item) {
   let newItem = {
@@ -280,5 +281,3 @@ function storeItem(item) {
   favData.push(newItem);
   localStorage.setItem("favs", JSON.stringify(favData));
 }
-
-console.log(localStorage.getItem("favs"));
