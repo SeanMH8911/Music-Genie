@@ -26,7 +26,6 @@ Next up was a basic wireframe
 <img src="https://user-images.githubusercontent.com/55624526/218803559-51ab4162-2786-434b-b9a0-86e0285e9a2d.png" alt="mypic" style="width:400px;"/>
 
 ## Meet - Music Genie
-
-<img src="https://user-images.githubusercontent.com/55624526/218804974-141e32aa-d2ac-4949-a5ed-f39cc3f975ac.png " alt="mypic" style="width:400px; align-text:left;"/>
+<img src="https://user-images.githubusercontent.com/55624526/219339774-62ada81c-189f-4ca0-b4f5-7b99d8ca2f41.png" alt="mypic" style="width:400px; align-text:left;"/>
 
 Deployed Link: https://seanmh8911.github.io/Music-Genie/
