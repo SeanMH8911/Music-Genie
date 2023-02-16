@@ -5,6 +5,7 @@ const options = {
     "X-RapidAPI-Host": "spotify81.p.rapidapi.com",
   },
 };
+
 const storedName = JSON.parse(localStorage.getItem("name"));
 const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
 const modal = document.getElementById("modal-content-welcome");
@@ -12,6 +13,7 @@ const nameInput = document.getElementById("nameInput");
 const nameSubmit = document.getElementById("nameSubmit");
 const welcome = document.getElementById("welcome");
 const myFavourites = document.getElementById("myFavourites");
+const clearFav = document.getElementById("clearFav");
 if (storedName === null) {
   $("#modal-content-welcome").modal("show");
   storeName();
@@ -36,6 +38,7 @@ function setName() {
 }
 
 if (storedFavs) {
+  clearFav.classList.remove("hide");
   for (let i = 0; i < storedFavs.length; i++) {
     artistInfo(storedFavs[i].id);
   }
@@ -53,11 +56,20 @@ function displayArtist(data) {
   myFavourites.innerHTML += `
   <div class="artistDetail">
     <img class="artistImg" src="${data.data.artist.visuals.avatarImage.sources[1].url}"></img>
-    <h3>${data.data.artist.profile.name}</h3>
+    <a href="${data.data.artist.uri}" target="_blank">
+      <h3>${data.data.artist.profile.name}</h3>
+    </a>
   </div>
   `;
 }
 
 if (!storedFavs) {
   myFavourites.innerHTML = `<p class="noItemMsg"> You do not have any favourites stored yet</p>`;
+  clearFav.classList.add("hide");
 }
+
+clearFav.addEventListener("click", () => {
+  localStorage.removeItem("favs");
+  myFavourites.innerHTML = `<p class="noItemMsg"> You do not have any favourites stored yet</p>`;
+  clearFav.classList.add("hide");
+});

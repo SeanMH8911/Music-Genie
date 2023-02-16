@@ -33,7 +33,23 @@ h1{
 .noItemMsg{
 color:#B91372;
 }
+button {
+background-color: #fa198b;
+border: none;
+font-size: 20px;
+font-weight: 500;
+color: #141414;
+border-radius: 8px;
+padding: 4px;
 
+}
+button:hover{
+    color: white;
+}
+
+.hide {
+    display: none;
+}
 
 .artistDetail{
     max-width: 400px;
@@ -46,7 +62,9 @@ color:#B91372;
 .artistDetail:hover {
     opacity: 100%;
 }
-
+.artistDetail a {
+    text-decoration: none;
+}
 .artistDetail h3{
     margin-left: 6px;
     color: white;

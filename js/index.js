@@ -282,3 +282,5 @@ function storeItem(item) {
   favData.push(newItem);
   localStorage.setItem("favs", JSON.stringify(favData));
 }
+
+console.log(favData);
