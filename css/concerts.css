@@ -28,13 +28,12 @@ h2{
     height: 200px;
     object-fit: cover;
 }
-.concertResults{
-    justify-content: center;
+#concertResults{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .cardDetail{
-    min-width: 400px;
-    max-width: 500px;
     padding: 10px;
     border-radius: 20px;
     border: 2px solid rgba(250, 25, 137, 0.8);

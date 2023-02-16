@@ -99,9 +99,6 @@ background-color: hsla(0, 0%, 100%, 0.8);
 }
 
 .link a {
-  /* position: fixed;
-  top: 10;
-  right: 10; */
   font-size: 26px;
 }
 .search-input:focus{
